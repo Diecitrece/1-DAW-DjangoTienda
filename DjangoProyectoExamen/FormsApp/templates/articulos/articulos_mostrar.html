@@ -1,0 +1,25 @@
+{% extends "articulos.html" %}
+{% block subcontent %}
+
+    <table id="tabla" border="2px solid black" style="border-collapse:collapse;">
+        <tr style="background-color:black;color:white;"><td>Nombre</td><td>Precio</td><td>Editar</td><td>Eliminar</td></tr>
+        {% for producto in productos%}
+            <tr style="background-color:white;">
+                <td>{{producto.Nombre}}</td>
+
+                <td>{{producto.PVP}}</td>
+
+                <td id="listbutton" onclick="window.location='/articulos/modificar/{{producto.idProducto}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; width:20%; margin-left:40%;">
+                        ✎
+                </td>
+
+                <td id="listbutton" onclick="window.location='/articulos/borrar/{{producto.idProducto}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; width:20%; margin-left:40%;">
+                        🗑️
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

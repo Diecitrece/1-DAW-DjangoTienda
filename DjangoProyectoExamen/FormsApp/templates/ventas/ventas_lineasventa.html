@@ -1,0 +1,33 @@
+{% extends "ventas.html" %}
+{% block subcontent %}
+    <script lang="javascript">
+        function crear(id)
+        {
+            window.location="/ventas/lineasventas/crear/" + id;
+        }
+    </script>
+    <table id="tabla" border="2px solid black" style="border-collapse:collapse;">
+        <tr><td colspan="5" id="createline" onclick="crear({{idventa}})">CREAR</td></tr>
+        <tr style="background-color:black;color:white;"><td>Producto</td><td>Cantidad</td><td>Precio total</td><td>Editar</td><td>Eliminar</td></tr>
+        {% for linea in lineasventas %}
+            <tr style="background-color:white;">
+                {% for producto in productos %}
+                    {% if producto.idProducto == linea.idProducto.idProducto %}
+                        <td>{{producto.Nombre}}</td>
+                    {% endif %}
+                {%endfor%}
+                <td>{{linea.Cantidad}}</td>
+                <td>{{linea.PrecioPorLinea}}</td>
+                <td id="listbutton" onclick="window.location='/ventas/lineasventas/modificar/{{linea.idLineaVenta}}/{{idventa}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; width:20%; margin-left:40%;">
+                        <span style="font-size: 20px;">✎</span>
+                </td>
+                <td id="listbutton" onclick="window.location='/ventas/lineasventas/borrar/{{linea.idLineaVenta}}/{{idventa}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; width:20%; margin-left:40%;">
+                        <span style="font-size: 20px;">🗑️</span>
+                </td>
+
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}

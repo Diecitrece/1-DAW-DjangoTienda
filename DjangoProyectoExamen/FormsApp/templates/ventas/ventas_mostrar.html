@@ -1,0 +1,36 @@
+{% extends "ventas.html" %}
+{% load custom_template_tag %}
+{% block subcontent %}
+    <table id="tabla" border="2px solid black" style="border-collapse:collapse;">
+        <tr style="background-color:black;color:white;"><td>Cliente</td><td>Importe total</td><td>Fecha</td><td>Editar</td><td>Editar líneas</td><td>Eliminar</td></tr>
+        {% setvar "" as nombre_anterior %}
+        {% for venta in ventas %}
+            <tr style="background-color:white;">
+                {% for cliente in clienteXventa %}
+                    {% if cliente.idCliente == venta.idCliente.idCliente %}
+                        {% if cliente.Nombre != nombre_anterior %}
+                            <td>{{cliente.Nombre}}</td>
+                            {% setvar cliente.Nombre as nombre_anterior%}
+                        {%endif%}
+                    {% endif %}
+                {%endfor%}
+
+                <td>{{venta.TotalVenta}}</td>
+                <td>{{venta.Fecha}}</td>
+                <td id="listbutton" onclick="window.location='/ventas/modificar/{{venta.idVenta}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; margin-left:40%;">
+                        <span style="font-size: 20px;">✎</span>
+                </td>
+                <td id="listbutton" onclick="window.location='/ventas/lineasventas/{{venta.idVenta}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; margin-left:40%;">
+                        <span style="font-size: 20px;">📝</span>
+                </td>
+                <td id="listbutton" onclick="window.location='/ventas/borrar/{{venta.idVenta}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; margin-left:40%;">
+                        <span style="font-size: 20px;">🗑️</span>
+                </td>
+
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    Clientes
+{% endblock %}
+{% block content %}
+    {%include "clientes/menu_clientes.html" %}
+    <div id="subcontent" style="width: 100%; height: 100%;overflow: scroll;overflow-y: auto;overflow-x: hidden;">
+    {% block subcontent %}
+
+    {% endblock%}
+    </div>
+{% endblock %}

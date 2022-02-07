@@ -1,0 +1,11 @@
+{% extends "articulos.html" %}
+{% block subcontent %}
+    <div id="destacados">
+        {% for producto in productos %}
+            <div>
+                <span style="text-decoration:underline; font-size: 29px;">{{producto.Nombre}}</span>
+                <br><br>Precio: {{producto.PVP}}€
+            </div>
+        {%endfor%}
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% load static %}
+{% load custom_template_tag %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title%}
+
+        {% endblock %}
+    </title>
+</head>
+<body>
+     <link href="{% static 'articulos.css' %}" rel="stylesheet">
+    <h1 onclick="window.location='/home'">GESTIÓN INCREÍBLE</h1>
+    {%include "barra.html"%}
+    <div id="contenido">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+</body>
+</html>

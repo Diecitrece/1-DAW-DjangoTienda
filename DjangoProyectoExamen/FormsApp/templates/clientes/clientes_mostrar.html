@@ -1,0 +1,29 @@
+{% extends "clientes.html" %}
+{% block subcontent %}
+{% load custom_template_tag %}
+{% load static %}
+    <link href="{% static 'articulos.css' %}" rel="stylesheet">
+    <table id="tabla" border="2px solid black" style="border-collapse:collapse;">
+        <tr style="background-color:black;color:white;"><td>Nombre</td><td>Total facturado</td><td>Número de teléfono</td><td>Editar</td><td>Eliminar</td></tr>
+        {% for cliente, facturacion in listado %}
+            <tr style="background-color:white;">
+                <td>{{cliente.Nombre}}</td>
+
+                <td>Total facturado: {{facturacion}}€</td>
+
+                <td>{{cliente.tlf}}</td>
+
+                <td id="listbutton" onclick="window.location='/clientes/modificar/{{cliente.idCliente}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; width:20%; margin-left:40%;">
+                        ✎
+                </td>
+
+                <td id="listbutton" onclick="window.location='/clientes/borrar/{{cliente.idCliente}}'"
+                         style="color:blue; font-size:23px; border:1px solid black; width:20%; margin-left:40%;">
+                        🗑️
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

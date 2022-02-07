@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Barra</title>
+    <style>
+        html, body
+        {
+            width: 100%;
+            height: 100%;
+        }
+        #barra
+        {
+            display: flex;
+            flex-direction: row;
+            height: 10%;
+            justify-content: center;
+        }
+        #barra div
+        {
+            width: 200px;
+            text-align: center;
+            border: 1px solid black;
+            background-color:white;
+            font-weight: bold;
+            font-size: 26px;
+            height: 96%;
+        }
+        #barra div:hover
+        {
+            border: 2px solid black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="barra">
+        <div onclick="window.location='/articulos'">ARTICULOS</div>
+        <div onclick="window.location='/clientes'">CLIENTES</div>
+        <div onclick="window.location='/ventas'">VENTAS</div>
+    </div>
+</body>
+</html>
